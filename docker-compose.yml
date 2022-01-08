@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  be:
+    build:
+      context: ./src/backend
+      dockerfile: ../../docker/backend/Dockerfile
+    container_name: mayan-b
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost" ]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+
+  #=====================================================================#
+  fe:
+    build:
+      context: ./src/frontend
+      dockerfile: ../../docker/frontend/Dockerfile
+    container_name: mayan-f
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost" ]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
