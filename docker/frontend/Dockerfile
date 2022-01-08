@@ -4,8 +4,9 @@ WORKDIR /usr/src/app/
 COPY ./package*.json /usr/src/app/
 RUN npm ci
 COPY . /usr/src/app/
+RUN npm run build
 
-EXPOSE 3000
+EXPOSE 3001
 
 # start the app
 CMD [ "npm", "start" ]
