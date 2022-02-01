@@ -9,11 +9,6 @@ services:
     restart: unless-stopped
     ports:
       - "3000:3000"
-    healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost" ]
-      interval: 1m30s
-      timeout: 10s
-      retries: 3
 
   #=====================================================================#
   fe:
@@ -24,8 +19,3 @@ services:
     restart: unless-stopped
     ports:
       - "3001:3001"
-    healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost" ]
-      interval: 1m30s
-      timeout: 10s
-      retries: 3
